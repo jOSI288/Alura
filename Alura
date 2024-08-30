@@ -1,0 +1,127 @@
+//variáveis da bolinha
+deixe xBolinha = 100;
+deixe yBolinha = 200;
+deixe diametro 20;
+deixe raio = diametro / 2;
+
+//variáveis do oponente
+deixe xRaqueteOponente = 585;
+deixe yRaqueteOponente = 150;
+
+//velocidade da bolinha
+deixe velocidadeXBolinha = 6;
+deixe velocidadeYBolinha = 6;
+
+//variáveis da raquete
+deixe xRaquete = 5;
+deixe yRaquete = 150;
+18 deixe raqueteComprimento = 10;
+deixe raqueteAltura = 90;
+
+//placar do jogo
+deixe meusPontos = 0;
+deixe pontosDoOponente = 0;
+
+//filhos do jogo
+deixe raquetada;
+deixe ponto;
+deixe trilha;
+
+deixe colidiu = falso;
+
+configuração de função () {
+criarCanvas (600 400);
+trilha loop ();
+}
+função draw () {
+fundo (0);
+mostraBolinha ();
+movimentaBolinha ();
+verificaColisaoBorda ();
+mostraRaquete (xRaquete, yRaquete);
+movimentaMinhaRaquete ();
+verificaColisaoRaquete (xRaquete, yRaquete );
+verificaColisaoRaquete yRaqueteOponente ); (xRaqueteOponente ,
+mostraRaquete (xRaqueteOponente yRaqueteOponente );
+movimentaRaqueteOponente ();
+incluirPlacar ()
+marcaPonto ();
+}
+função mostraBolinha () {
+círculo (xBolinha, yBolinha, diametro );
+}
+função movimentaBolinha () {
+
+xBolinha += velocidadeXBolinha ;
+yBolinha += velocidadeYBolinha;
+}
+
+função verificaColisaoBorda () {
+if (xBolinha + raio &gt; largura || xBolinha
+raio &lt; 0) {
+}
+if (yBolinha + raio &gt; altura || yBolinha raio &lt; 0) {
+velocidadeYBolinha *= 1;
+}
+}
+function mostra Raquete (x, y) {
+rect (x, y, raqueteComprimento, raqueteAltura );
+}
+função movimentaMinhaRaquete () { se (keyIsDown (UP_ARROW )) {
+yRaquete -= 10;
+}
+se (keyIsDown (SETA_PARA_BAIXO )) {
+yRaquete += 10;
+}
+}
+função verificaColisaoRaquete () {
+if (xBolinha raio &lt; xRaquete +
+raqueteComprimento &amp;&amp; yBolinha yRaquete + - raio raqueteAltura &amp;&amp; yBolinha &gt;
+yRaquete ) { &lt; + raio
+velocidadeXBolinha *= 1;
+raquetada play ();
+}
+{ função verificaColisaoRaquete (x, y) { colideRectCircle (x, y,
+colidiu
+velocidadeXBolinha 1;
+raqueteComprimento, raqueteAltura, xBolinha
+Bolinha raio ); 1
+
+se (colidiu ){
+velocidadeXBolinha *= 1;
+raquetada play ();
+}
+}
+função movimentaRaqueteOponente (){ se (keyIsDown (87 )){
+yRaqueteOponente == 10;
+}
+se (keyIsDown (83)){
+yRaqueteOponente += 10;
+}
+}
+função incluiPlacar (){
+acidente vascular cerebral (255)
+textAlign (CENTRALIZAR);
+tamanho do texto (16);
+preencher (cor (255, 140 retângulo (150, 10 40 0)); 20);
+preencher (255); texto (meusPontos 170 26);
+preencher (cor (255 140 0)); retângulo (450, 10, 40 20);
+preencher (255);
+texto (pontosDoOponente 470 26);
+}
+função marcaPonto () {
+se (xBolinha &gt; 590 ) {
+meusPontos += 1;
+ponto play ();
+}
+se (xBolinha &lt; 10) {
+pontos DoOponente += 1;
+
+ponto play ();
+}
+}
+função preload (){
+trilha = loadSound (&quot;trilha.mp3&quot;);
+ponto = carregarSom (&quot;ponto.mp3&quot; );
+raquetada = loadSound (&quot;raquetada.mp3&quot;);
+}
